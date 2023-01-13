@@ -6,12 +6,12 @@ import board
 import digitalio
 
 
-btn1_pin = board.GP9
+btn1_pin = board.GP7
 btn2_pin = board.GP8
-btn3_pin = board.GP7
-btn4_pin = board.GP19
+btn3_pin = board.GP9
+btn4_pin = board.GP18
 btn5_pin = board.GP20
-btn6_pin = board.GP21
+btn6_pin = board.GP19
 
 btn1 = digitalio.DigitalInOut(btn1_pin)
 btn1.direction = digitalio.Direction.INPUT
@@ -41,21 +41,22 @@ keyboard = Keyboard(usb_hid.devices)
 
 while True:
     if btn1.value:
-        keyboard.send(Keycode.CONTROL, Keycode.F7)
+        keyboard.send(Keycode.CONTROL, Keycode.SHIFT, Keycode.M) #Toggle mute
         time.sleep(0.1)
     if btn2.value:
-        keyboard.send(Keycode.CONTROL, Keycode.F8)
+        keyboard.send(Keycode.CONTROL, Keycode.SHIFT, Keycode.O) #Toggle video
         time.sleep(0.1)
     if btn3.value:
-        keyboard.send(Keycode.CONTROL, Keycode.F9)
+        keyboard.send(Keycode.ALT, Keycode.SHIFT, Keycode.J) #Join meeting from outlook reminder
         time.sleep(0.1)
     if btn4.value:
-        keyboard.send(Keycode.CONTROL, Keycode.F10)
+        keyboard.send(Keycode.CONTROL, Keycode.SHIFT, Keycode.S) #Accept call with audio only
         time.sleep(0.1)
     if btn5.value:
-        keyboard.send(Keycode.CONTROL, Keycode.F11)
+        keyboard.send(Keycode.CONTROL, Keycode.SHIFT, Keycode.A) #Accept call with audio/video
         time.sleep(0.1)
     if btn6.value:
-        keyboard.send(Keycode.CONTROL, Keycode.F12)
+        keyboard.send(Keycode.CONTROL, Keycode.SHIFT, Keycode.H) #Disconnect from call
         time.sleep(0.1)
     time.sleep(0.1)
+
